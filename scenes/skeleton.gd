@@ -3,9 +3,14 @@ extends Area2D
 @onready var direction_x: int
 @onready var direction_y: int
 @onready var attack_range = $CollisionArea
+@onready var attack_timer = $Timer
 
 var target
 var target_direction
+var max_damage = 10
+var min_damage = 2
+
+signal damage_done(damage: int)
 
 enum State {
 	SEARCHING,
@@ -55,8 +60,14 @@ func _detected(delta):
 	global_position.y += 50 * delta * target_direction.y
 
 func _attacking():
-	print("Near a lock. Attack!")
+	pass
 
 func _on_area_entered(area):
 	if area.is_in_group("locks"):
 		current_state = State.ATTACKING
+		attack_timer.start()
+
+func _on_timer_timeout():
+	print("Attacking...")
+	var damage = randi_range(min_damage, max_damage)
+	damage_done.emit(damage)
