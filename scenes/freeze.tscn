@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cep0hlev1mboh"]
+
+[ext_resource type="Script" path="res://scenes/freeze.gd" id="1_y3b7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wppwo"]
+radius = 24.0
+
+[node name="Freeze" type="Area2D" groups=["freeze"]]
+script = ExtResource("1_y3b7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wppwo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

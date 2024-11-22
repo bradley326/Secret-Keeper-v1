@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfsydpvqmrmsb"]
+
+[ext_resource type="Script" path="res://scenes/choices_ui.gd" id="1_o4hnu"]
+
+[node name="ChoicesUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o4hnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 229.0
+metadata/_edit_group_ = true
+
+[node name="LieOneBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LieText" type="Label" parent="VBoxContainer/LieOneBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "lie text"
+
+[node name="SkeletonAmount" type="Label" parent="VBoxContainer/LieOneBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "skeleton number"
+
+[node name="GoldAmount" type="Label" parent="VBoxContainer/LieOneBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "gold amount"
+
+[node name="ButtonOne" type="Button" parent="VBoxContainer/LieOneBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "accept"
+
+[node name="LieTwoBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LieText" type="Label" parent="VBoxContainer/LieTwoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "lie text"
+
+[node name="SkeletonAmount" type="Label" parent="VBoxContainer/LieTwoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "skeleton number"
+
+[node name="GoldAmount" type="Label" parent="VBoxContainer/LieTwoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "gold amount"
+
+[node name="ButtonTwo" type="Button" parent="VBoxContainer/LieTwoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "accept"
+
+[node name="LieThreeBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LieText" type="Label" parent="VBoxContainer/LieThreeBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "lie text"
+
+[node name="SkeletonAmount" type="Label" parent="VBoxContainer/LieThreeBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "skeleton number"
+
+[node name="GoldAmount" type="Label" parent="VBoxContainer/LieThreeBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "gold amount"
+
+[node name="ButtonThree" type="Button" parent="VBoxContainer/LieThreeBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "accept"
+
+[connection signal="pressed" from="VBoxContainer/LieOneBox/ButtonOne" to="." method="_on_button_one_pressed"]
+[connection signal="pressed" from="VBoxContainer/LieTwoBox/ButtonTwo" to="." method="_on_button_two_pressed"]
+[connection signal="pressed" from="VBoxContainer/LieThreeBox/ButtonThree" to="." method="_on_button_three_pressed"]

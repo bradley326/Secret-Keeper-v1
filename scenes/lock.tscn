@@ -34,6 +34,7 @@ offset_left = -24.0
 offset_top = -8.0
 offset_right = 16.0
 offset_bottom = 2.0
+mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 layout_mode = 1
@@ -48,5 +49,9 @@ offset_right = -32.0
 offset_bottom = -6.0
 theme = SubResource("Theme_qf823")
 value = 100.0
-fill_mode = 1
 show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

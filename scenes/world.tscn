@@ -1,25 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2l2njvogafnv"]
+[gd_scene load_steps=6 format=3 uid="uid://b2l2njvogafnv"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_wqnw0"]
 [ext_resource type="PackedScene" uid="uid://cxsepau705cwb" path="res://scenes/closet.tscn" id="2_sgyux"]
-[ext_resource type="PackedScene" uid="uid://b0e4h1qa4ux8s" path="res://scenes/skeleton.tscn" id="2_vt1mw"]
 [ext_resource type="PackedScene" uid="uid://qst0knvxpt54" path="res://scenes/lock.tscn" id="3_1lou8"]
+[ext_resource type="PackedScene" uid="uid://dk1tqo8oaj5rs" path="res://scenes/ui.tscn" id="5_6rw2h"]
+[ext_resource type="PackedScene" uid="uid://de8vqxhpstgdl" path="res://scenes/mark.tscn" id="6_ur3td"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_wqnw0")
 
-[node name="Skeleton" parent="." instance=ExtResource("2_vt1mw")]
-position = Vector2(224, 88)
-
 [node name="Closet" parent="." instance=ExtResource("2_sgyux")]
-position = Vector2(192, 32)
-metadata/_edit_lock_ = true
+position = Vector2(448, 64)
 
 [node name="Lock" parent="." instance=ExtResource("3_1lou8")]
-position = Vector2(96, 128)
+position = Vector2(440, 224)
 
 [node name="Lock2" parent="." instance=ExtResource("3_1lou8")]
-position = Vector2(96, 88)
+position = Vector2(440, 160)
 
 [node name="Lock3" parent="." instance=ExtResource("3_1lou8")]
-position = Vector2(96, 48)
+position = Vector2(440, 104)
+
+[node name="UI" parent="." instance=ExtResource("5_6rw2h")]
+
+[node name="Mark" parent="." instance=ExtResource("6_ur3td")]
+position = Vector2(208, 250)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
