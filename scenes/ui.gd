@@ -3,10 +3,16 @@ extends Control
 @onready var energy_bar = $HBoxContainer3/EnergyAmount
 @onready var skeleton_label = $HBoxContainer2/SkeletonLabel
 @onready var gold_label = $HBoxContainer2/MoneyLabel
+@onready var upgrade_ui = preload("res://scenes/ui_upgrades.tscn")
+@onready var upgrade_ui_visible: bool
+@onready var new_upgrade_ui = upgrade_ui.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_child(new_upgrade_ui)
+	new_upgrade_ui.global_position.x = -500
+	new_upgrade_ui.global_position.y = -500
+	upgrade_ui_visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +31,9 @@ func _on_texture_button_2_pressed():
 	print("Activating Freeze")
 	GameController.current_tool = GameController.Tool.FREEZE
 
+func _on_texture_button_3_pressed():
+	GameController.current_tool = GameController.Tool.BAIT
+
 func update_energy():
 	energy_bar.value = GameController.current_energy
 	
@@ -33,3 +42,14 @@ func update_skeleton_count():
 	
 func update_gold_count():
 	gold_label.text = str(GameController.gold_count)
+
+func _on_upgrade_button_pressed() -> void:
+	if upgrade_ui_visible == false:
+		new_upgrade_ui.global_position.x = 304
+		new_upgrade_ui.global_position.y = 360
+		upgrade_ui_visible = true
+	elif upgrade_ui_visible == true:
+		new_upgrade_ui.global_position.x = -500
+		new_upgrade_ui.global_position.y = -500
+		upgrade_ui_visible = false
+	

@@ -26,7 +26,7 @@ var current_state: State = State.SEARCHING
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_random_direction()
-	freeze_timer.wait_time = GameController.freeze_duration
+	freeze_timer.wait_time = GameController.freeze_tool_freeze_duration
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,27 +48,34 @@ func get_random_direction():
 	direction_y = randi() % 2 * 2 - 1
 
 func _on_detect_area_area_entered(area):
-	if area.is_in_group("locks") and GameController.time == "night":
+	if area.is_in_group("bait") and GameController.time == "night":
+		current_state = State.DETECTED
+		target = area
+	elif area.is_in_group("locks") and GameController.time == "night":
 		current_state = State.DETECTED
 		target = area
 
 func _searching(delta):
-	global_position.x += 50 * delta * direction_x
-	global_position.y += 50 * delta * direction_y
+	global_position.x += 30 * delta * direction_x
+	global_position.y += 30 * delta * direction_y
 
 func _detected(delta):
-	target_direction = (target.global_position - global_position).normalized()
-	global_position.x += 50 * delta * target_direction.x
-	global_position.y += 50 * delta * target_direction.y
+	if target != null:
+		target_direction = (target.global_position - global_position).normalized()
+		global_position.x += 70 * delta * target_direction.x
+		global_position.y += 70 * delta * target_direction.y
 
 func _attacking():
-	pass
+	if target == null:
+		current_state = State.SEARCHING
+		#if target.current_health <= 0:
+
 
 func _frozen():
 	pass
 
 func _on_area_entered(area):
-	if area.is_in_group("locks") and GameController.time == "night":
+	if (area.is_in_group("locks") or area.is_in_group("bait")) and GameController.time == "night":
 		current_state = State.ATTACKING
 		attack_timer.start()
 	if area.is_in_group("freeze"):

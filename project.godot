@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Secret Keeper"
+config/name="Preload"
 run/main_scene="res://scenes/start_menu.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://assets/icon.svg"
@@ -22,10 +22,14 @@ GameController="*res://game_controller.gd"
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_height=480
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[gui]
+
+timers/tooltip_delay_sec=0.1
 
 [input]
 
@@ -42,4 +46,7 @@ left_mouse={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/decals/filter=0
+textures/light_projectors/filter=0

@@ -1,0 +1,194 @@
+[gd_scene load_steps=21 format=3 uid="uid://qm3tc3kc6kjv"]
+
+[ext_resource type="Script" path="res://scenes/ui_upgrades.gd" id="1_wk35x"]
+[ext_resource type="Texture2D" uid="uid://dlpb122683pei" path="res://assets/repair health upgrade normal.png" id="2_ys187"]
+[ext_resource type="Texture2D" uid="uid://bqycqm4h2mlfl" path="res://assets/repair health upgrade pressed.png" id="3_5ywn2"]
+[ext_resource type="Texture2D" uid="uid://0bhlkpuoc10d" path="res://assets/repair health upgrade hover.png" id="4_q8lri"]
+[ext_resource type="Texture2D" uid="uid://43mx41jn4vku" path="res://assets/repair regen upgrade normal.png" id="5_fphwd"]
+[ext_resource type="Texture2D" uid="uid://dc4weo7qp8vos" path="res://assets/repair regen upgrade pressed.png" id="6_hliqo"]
+[ext_resource type="Texture2D" uid="uid://btevm7qx7pjvb" path="res://assets/repair regen upgrade hover.png" id="7_fyr7t"]
+[ext_resource type="Texture2D" uid="uid://co53tfsiyvbk8" path="res://assets/repair energy cost normal.png" id="8_gsapx"]
+[ext_resource type="Texture2D" uid="uid://1ymr4sfqinif" path="res://assets/repair energy cost pressed.png" id="9_44oo6"]
+[ext_resource type="Texture2D" uid="uid://d1iodg6f8cwee" path="res://assets/repair energy cost hover.png" id="10_0apje"]
+[ext_resource type="Texture2D" uid="uid://bm3eb83pp8nry" path="res://assets/repair increase normal.png" id="11_ag1pl"]
+[ext_resource type="Texture2D" uid="uid://ckt57qiybbqm3" path="res://assets/repair increase pressed.png" id="12_grgdy"]
+[ext_resource type="Texture2D" uid="uid://dxc22ilfy4b7c" path="res://assets/repair increase hover.png" id="13_rwxl6"]
+[ext_resource type="Texture2D" uid="uid://f4orsfsaenh4" path="res://assets/freeze duration normal.png" id="14_2mi1g"]
+[ext_resource type="Texture2D" uid="uid://by8gmb52w5tij" path="res://assets/freeze duration pressed.png" id="15_oejqm"]
+[ext_resource type="Texture2D" uid="uid://cs534854qbc3n" path="res://assets/freeze duration hover.png" id="16_shtod"]
+[ext_resource type="Texture2D" uid="uid://bc35ip7rlv382" path="res://assets/freeze size normal.png" id="17_itmc2"]
+[ext_resource type="Texture2D" uid="uid://cwsrm4f4kpgxt" path="res://assets/freeze size pressed.png" id="18_4g1ih"]
+[ext_resource type="Texture2D" uid="uid://22tg4l2xi75a" path="res://assets/freeze size hover.png" id="19_il2my"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bykf"]
+bg_color = Color(0.137255, 0, 0.152941, 1)
+
+[node name="UIUpgrades" type="Control"]
+z_index = 5
+layout_mode = 3
+anchor_left = 0.475
+anchor_top = 0.7
+anchor_right = 0.875
+anchor_bottom = 0.867
+offset_top = -3.05176e-05
+offset_right = -6.10352e-05
+offset_bottom = -0.160034
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk35x")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 232.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bykf")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.25
+anchor_top = 1.5
+anchor_right = 1.25
+anchor_bottom = 1.5
+offset_left = -280.0
+offset_top = -96.0
+offset_right = 200.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 24
+
+[node name="Locks" type="HBoxContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+metadata/_tab_index = 0
+
+[node name="LockHealthButton" type="TextureButton" parent="TabContainer/Locks"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Upgrade the amount of damage your locks can receive before breaking.
+50 gold."
+texture_normal = ExtResource("2_ys187")
+texture_pressed = ExtResource("3_5ywn2")
+texture_hover = ExtResource("4_q8lri")
+stretch_mode = 0
+
+[node name="LockHealthRegen" type="TextureButton" parent="TabContainer/Locks"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Your locks slowly repair themselves."
+texture_normal = ExtResource("5_fphwd")
+texture_pressed = ExtResource("6_hliqo")
+texture_hover = ExtResource("7_fyr7t")
+stretch_mode = 0
+
+[node name="Placeholder" type="TextureButton" parent="TabContainer/Locks"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Repair Tool" type="HBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+metadata/_tab_index = 1
+
+[node name="RepairToolEnergyCost" type="TextureButton" parent="TabContainer/Repair Tool"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Reduce the energy cost of your repair tool."
+texture_normal = ExtResource("8_gsapx")
+texture_pressed = ExtResource("9_44oo6")
+texture_hover = ExtResource("10_0apje")
+stretch_mode = 0
+
+[node name="RepairToolHealAmount" type="TextureButton" parent="TabContainer/Repair Tool"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Increase the amount of each repair."
+texture_normal = ExtResource("11_ag1pl")
+texture_pressed = ExtResource("12_grgdy")
+texture_hover = ExtResource("13_rwxl6")
+stretch_mode = 0
+
+[node name="Placeholder2" type="TextureButton" parent="TabContainer/Repair Tool"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Freeze Tool" type="HBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+metadata/_tab_index = 2
+
+[node name="FreezeToolEnergyCost" type="TextureButton" parent="TabContainer/Freeze Tool"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Reduce the energy cost of your freeze tool."
+texture_normal = ExtResource("8_gsapx")
+texture_pressed = ExtResource("9_44oo6")
+texture_hover = ExtResource("10_0apje")
+stretch_mode = 0
+
+[node name="FreezeToolFreezeDuration" type="TextureButton" parent="TabContainer/Freeze Tool"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Increase the duration that skeletons are frozen."
+texture_normal = ExtResource("14_2mi1g")
+texture_pressed = ExtResource("15_oejqm")
+texture_hover = ExtResource("16_shtod")
+stretch_mode = 0
+
+[node name="FreezeToolFreezeRadius" type="TextureButton" parent="TabContainer/Freeze Tool"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Increase the area of effect of your freeze tool."
+texture_normal = ExtResource("17_itmc2")
+texture_pressed = ExtResource("18_4g1ih")
+texture_hover = ExtResource("19_il2my")
+stretch_mode = 0
+
+[node name="Placeholder3" type="TextureButton" parent="TabContainer/Freeze Tool"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Baits" type="HBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BaitEnergyCost" type="TextureButton" parent="TabContainer/Baits"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_gsapx")
+texture_pressed = ExtResource("9_44oo6")
+texture_hover = ExtResource("10_0apje")
+stretch_mode = 0
+
+[node name="BaitHealth" type="TextureButton" parent="TabContainer/Baits"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("11_ag1pl")
+texture_pressed = ExtResource("12_grgdy")
+texture_hover = ExtResource("13_rwxl6")
+stretch_mode = 0
+
+[node name="Placeholder2" type="TextureButton" parent="TabContainer/Baits"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+stretch_mode = 0
+
+[connection signal="pressed" from="TabContainer/Locks/LockHealthButton" to="." method="_on_lock_health_button_pressed"]
+[connection signal="pressed" from="TabContainer/Locks/LockHealthRegen" to="." method="_on_lock_health_regen_pressed"]
+[connection signal="pressed" from="TabContainer/Repair Tool/RepairToolEnergyCost" to="." method="_on_repair_tool_energy_cost_pressed"]
+[connection signal="pressed" from="TabContainer/Repair Tool/RepairToolHealAmount" to="." method="_on_repair_tool_heal_amount_pressed"]
+[connection signal="pressed" from="TabContainer/Freeze Tool/FreezeToolEnergyCost" to="." method="_on_freeze_tool_energy_cost_pressed"]
+[connection signal="pressed" from="TabContainer/Freeze Tool/FreezeToolFreezeDuration" to="." method="_on_freeze_tool_freeze_duration_pressed"]
+[connection signal="pressed" from="TabContainer/Freeze Tool/FreezeToolFreezeRadius" to="." method="_on_freeze_tool_freeze_radius_pressed"]
+[connection signal="pressed" from="TabContainer/Baits/BaitEnergyCost" to="." method="_on_bait_energy_cost_pressed"]
+[connection signal="pressed" from="TabContainer/Baits/BaitHealth" to="." method="_on_bait_health_pressed"]

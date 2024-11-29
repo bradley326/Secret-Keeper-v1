@@ -1,8 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1tqo8oaj5rs"]
+[gd_scene load_steps=22 format=3 uid="uid://dk1tqo8oaj5rs"]
 
-[ext_resource type="Texture2D" uid="uid://drh0rdyyftb67" path="res://assets/icon.svg" id="1_8g5rm"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_egu5k"]
-[ext_resource type="Texture2D" uid="uid://b6y726iqg36x6" path="res://assets/heart.png" id="2_3c3rv"]
+[ext_resource type="Texture2D" uid="uid://cs1wagayipeou" path="res://assets/repair icon normal.png" id="2_1gg86"]
+[ext_resource type="Texture2D" uid="uid://ocoo7048fsfy" path="res://assets/repair icon pressed.png" id="3_ivxlg"]
+[ext_resource type="Texture2D" uid="uid://dewadma60o3jm" path="res://assets/repair icon hover.png" id="4_3mgto"]
+[ext_resource type="Texture2D" uid="uid://oqhyor2msjwb" path="res://assets/gold icon.png" id="4_56y2y"]
+[ext_resource type="Texture2D" uid="uid://2pikkp1iq6ma" path="res://assets/skull icon.png" id="4_lpvut"]
+[ext_resource type="Texture2D" uid="uid://bpn65e3hvibyt" path="res://assets/freeze icon normal.png" id="5_po37i"]
+[ext_resource type="Texture2D" uid="uid://b11my8g4hsg7r" path="res://assets/freeze icon pressed.png" id="6_7vqws"]
+[ext_resource type="Texture2D" uid="uid://buxiaq1fibv8o" path="res://assets/freeze icon hover.png" id="7_0i6l1"]
+[ext_resource type="Texture2D" uid="uid://cx66eb8dlkckp" path="res://assets/bait icon normal.png" id="8_23y2t"]
+[ext_resource type="Texture2D" uid="uid://dxve4wbdrxpxu" path="res://assets/bait icon pressed.png" id="9_s2f32"]
+[ext_resource type="Texture2D" uid="uid://dfal0iiyrgkp4" path="res://assets/bait icon hover.png" id="10_83kf3"]
+[ext_resource type="Texture2D" uid="uid://b27h463fuvgkh" path="res://assets/energy icon.png" id="13_ft7vc"]
+[ext_resource type="Texture2D" uid="uid://bnv866wr2h2cs" path="res://assets/upgrade icon normal.png" id="14_g3b0f"]
+[ext_resource type="Texture2D" uid="uid://brmlbmn1co7td" path="res://assets/upgrade icon pressed.png" id="15_fuvpw"]
+[ext_resource type="Texture2D" uid="uid://br8vctqyf7d6r" path="res://assets/upgrade icon hover.png" id="16_s4ve4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15che"]
+bg_color = Color(0.137255, 0, 0.152941, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ouwo"]
 border_color = Color(0.8, 0, 0.00392157, 1)
@@ -27,41 +43,63 @@ anchor_top = 0.489
 anchor_right = 0.5
 anchor_bottom = 0.489
 offset_left = -320.0
-offset_top = -176.04
+offset_top = -178.72
 offset_right = 320.0
-offset_bottom = 183.96
+offset_bottom = 242.28
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_egu5k")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 384.0
+offset_right = 634.0
+offset_bottom = 416.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_15che")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 320.0
-offset_top = 329.0
-offset_right = 712.0
-offset_bottom = 457.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -37.0
+offset_right = 621.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(0.15, 0.15)
-metadata/_edit_group_ = true
 
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme = SubResource("Theme_fc8iy")
-texture_normal = ExtResource("1_8g5rm")
-texture_pressed = ExtResource("1_8g5rm")
-texture_hover = ExtResource("2_3c3rv")
+texture_normal = ExtResource("2_1gg86")
+texture_pressed = ExtResource("3_ivxlg")
+texture_hover = ExtResource("4_3mgto")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="TextureButton2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_8g5rm")
+size_flags_horizontal = 3
+texture_normal = ExtResource("5_po37i")
+texture_pressed = ExtResource("6_7vqws")
+texture_hover = ExtResource("7_0i6l1")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="TextureButton3" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_8g5rm")
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_23y2t")
+texture_pressed = ExtResource("9_s2f32")
+texture_hover = ExtResource("10_83kf3")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
@@ -72,13 +110,13 @@ anchor_top = 0.894
 anchor_right = 0.187
 anchor_bottom = 0.992
 offset_left = 8.0
-offset_top = 6.15997
+offset_top = 6.62601
 offset_right = 0.319992
-offset_bottom = -10.12
+offset_bottom = -1.63199
 
 [node name="MoneyIcon" type="TextureRect" parent="HBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("1_8g5rm")
+texture = ExtResource("4_56y2y")
 expand_mode = 2
 
 [node name="MoneyLabel" type="Label" parent="HBoxContainer2"]
@@ -88,7 +126,7 @@ text = "1000"
 
 [node name="SkeletonIcon" type="TextureRect" parent="HBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("1_8g5rm")
+texture = ExtResource("4_lpvut")
 expand_mode = 2
 
 [node name="SkeletonLabel" type="Label" parent="HBoxContainer2"]
@@ -103,14 +141,14 @@ anchor_top = 0.894
 anchor_right = 0.975
 anchor_bottom = 0.989
 offset_left = 32.0
-offset_top = 7.16
+offset_top = 7.62601
 offset_right = 10.0
-offset_bottom = -5.04001
+offset_bottom = -0.369019
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer3"]
 layout_mode = 2
-texture = ExtResource("1_8g5rm")
+texture = ExtResource("13_ft7vc")
 expand_mode = 2
 
 [node name="EnergyAmount" type="ProgressBar" parent="HBoxContainer3"]
@@ -121,5 +159,31 @@ theme_override_font_sizes/font_size = 10
 theme_override_styles/fill = SubResource("StyleBoxFlat_3yv4c")
 value = 100.0
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.6
+anchor_top = 0.988
+anchor_right = 0.6
+anchor_bottom = 0.988
+offset_left = -16.0
+offset_top = -31.948
+offset_right = 197.0
+offset_bottom = 181.052
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.15, 0.15)
+
+[node name="UpgradeButton" type="TextureButton" parent="HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_fc8iy")
+texture_normal = ExtResource("14_g3b0f")
+texture_pressed = ExtResource("15_fuvpw")
+texture_hover = ExtResource("16_s4ve4")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="HBoxContainer4/UpgradeButton" to="." method="_on_upgrade_button_pressed"]

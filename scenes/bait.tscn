@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhsh0exq34qo4"]
+
+[ext_resource type="Script" path="res://Bait.gd" id="1_ykyis"]
+[ext_resource type="Texture2D" uid="uid://duvh3by25lkgy" path="res://assets/bait sprite.png" id="2_gcsrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vu3t"]
+size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hestl"]
+bg_color = Color(1.82897e-06, 0.726712, 0.150785, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_50vve"]
+ProgressBar/font_sizes/font_size = 4
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hestl")
+
+[node name="Bait" type="Area2D" groups=["bait"]]
+script = ExtResource("1_ykyis")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gcsrs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5vu3t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 2.0
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.4
+anchor_top = -0.8
+anchor_right = 1.6
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = 2.0
+offset_right = -32.0
+offset_bottom = -6.0
+theme = SubResource("Theme_50vve")
+value = 100.0
+show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

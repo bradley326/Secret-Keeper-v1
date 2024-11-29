@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgtp8"]
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6atdf"]
-size = Vector2(80, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kf4q"]
+radius = 32.0
 
 [node name="Skeleton" type="Area2D" groups=["skeletons"]]
 script = ExtResource("1_4h3m6")
@@ -22,7 +22,7 @@ shape = SubResource("CircleShape2D_vgtp8")
 [node name="DetectArea" type="Area2D" parent="."]
 
 [node name="DetectBox" type="CollisionShape2D" parent="DetectArea"]
-shape = SubResource("RectangleShape2D_6atdf")
+shape = SubResource("CircleShape2D_0kf4q")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
