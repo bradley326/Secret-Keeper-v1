@@ -1,22 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2l2njvogafnv"]
+[gd_scene load_steps=14 format=3 uid="uid://b2l2njvogafnv"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_wqnw0"]
-[ext_resource type="Texture2D" uid="uid://crkyn5yqkyext" path="res://assets/background.png" id="2_2308x"]
 [ext_resource type="PackedScene" uid="uid://cxsepau705cwb" path="res://scenes/closet.tscn" id="2_sgyux"]
+[ext_resource type="Texture2D" uid="uid://fyb2ftucl5b0" path="res://assets/background 2.png" id="2_tlfbe"]
+[ext_resource type="Texture2D" uid="uid://cd2y2lgonbm51" path="res://assets/closet door.png" id="4_f68rj"]
+[ext_resource type="Texture2D" uid="uid://cna38wwbwlhcs" path="res://assets/sky.png" id="4_w14uf"]
 [ext_resource type="PackedScene" uid="uid://dk1tqo8oaj5rs" path="res://scenes/ui.tscn" id="5_6rw2h"]
+[ext_resource type="Script" path="res://scenes/ClosetDoor.gd" id="5_wdvn2"]
 [ext_resource type="PackedScene" uid="uid://de8vqxhpstgdl" path="res://scenes/mark.tscn" id="6_ur3td"]
+[ext_resource type="PackedScene" uid="uid://d3l0nvjvg65a8" path="res://scenes/not_enough_energy.tscn" id="8_njxhw"]
+[ext_resource type="AudioStream" uid="uid://bktr0ebdb5td5" path="res://assets/sound/Magic Within (looped).wav" id="9_w6tgt"]
+[ext_resource type="AudioStream" uid="uid://bes2stloxpiv4" path="res://assets/sound/Driving Force (looped).wav" id="10_7elgy"]
+[ext_resource type="AudioStream" uid="uid://clyw6l00ubuiv" path="res://assets/sound/click.wav" id="11_o5xjx"]
+[ext_resource type="AudioStream" uid="uid://8823v60qfvx6" path="res://assets/sound/doorOpen_1.ogg" id="12_rpfd8"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_wqnw0")
 
+[node name="NotEnoughEnergy" parent="." instance=ExtResource("8_njxhw")]
+z_index = 10
+
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -1
+z_index = -2
 position = Vector2(320, 240)
-texture = ExtResource("2_2308x")
+texture = ExtResource("2_tlfbe")
+
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(193.5, 139)
+scale = Vector2(1.0283, 1.05172)
+texture = ExtResource("4_w14uf")
 
 [node name="Closet" parent="." instance=ExtResource("2_sgyux")]
-position = Vector2(384, 64)
-metadata/_edit_lock_ = true
+position = Vector2(392, 72)
+
+[node name="ClosetDoor" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(488, 200)
+texture = ExtResource("4_f68rj")
+script = ExtResource("5_wdvn2")
 
 [node name="UI" parent="." instance=ExtResource("5_6rw2h")]
 metadata/_edit_lock_ = true
@@ -30,6 +52,18 @@ autostart = true
 
 [node name="EnergyTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="DayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_w6tgt")
+
+[node name="NightMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7elgy")
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o5xjx")
+
+[node name="SpawnNPCSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rpfd8")
 
 [connection signal="timeout" from="NightTimer" to="." method="_on_night_timer_timeout"]
 [connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]

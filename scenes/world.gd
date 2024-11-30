@@ -3,14 +3,22 @@ extends Node
 @onready var skeleton = preload("res://scenes/skeleton.tscn")
 @onready var freeze_area = preload("res://scenes/freeze.tscn")
 @onready var npc = preload("res://scenes/npc.tscn")
+@onready var npc2 = preload("res://scenes/npc2.tscn")
+@onready var npc3 = preload("res://scenes/npc3.tscn")
 @onready var choices_ui = preload("res://scenes/choices_ui.tscn")
 @onready var bait = preload("res://scenes/bait.tscn")
 @onready var lock = preload("res://scenes/lock.tscn")
+@onready var moon = preload("res://scenes/moon.tscn")
 
 @onready var closet = $Closet
 @onready var ui = $UI
 @onready var night_timer = $NightTimer
 @onready var energy_timer = $EnergyTimer
+@onready var not_enough_energy = $NotEnoughEnergy
+@onready var day_music_player = $DayMusic
+@onready var night_music_player = $NightMusic
+@onready var click_sound_player = $ClickSoundPlayer
+@onready var spawn_npc_sound = $SpawnNPCSound
 
 var current_npc: Node = null
 var choice_count: int = 0
@@ -22,6 +30,10 @@ func _ready():
 	GameController.lock_counter = 0
 	GameController.current_energy = GameController.total_energy
 	energy_timer.wait_time = GameController.energy_regen_time
+	
+	if GameController.time == "night":
+		var new_moon = moon.instantiate()
+		add_child(new_moon)
 	
 	#Spawn however many skeletons have been added thus far
 	for n in GameController.skeletons_to_spawn:
@@ -35,16 +47,16 @@ func _ready():
 			var new_lock = lock.instantiate()
 			add_child(new_lock)
 			if n == 0:
-				new_lock.global_position.x = 480
+				new_lock.global_position.x = 490
 				new_lock.global_position.y = 104
 			if n == 1:
-				new_lock.global_position.x = 480
+				new_lock.global_position.x = 490
 				new_lock.global_position.y = 160
 			if n == 2:
-				new_lock.global_position.x = 480
+				new_lock.global_position.x = 490
 				new_lock.global_position.y = 224
 			if n == 3:
-				new_lock.global_position.x = 480
+				new_lock.global_position.x = 490
 				new_lock.global_position.y = 288
 		GameController.lock_counter += 1
 		
@@ -56,6 +68,12 @@ func _ready():
 		new_npc.global_position.x = 0
 		new_npc.global_position.y = 352
 		new_npc.connect("npc_ready", _on_npc_ready)
+		spawn_npc_sound.play()
+		
+	if GameController.time == "day":
+		day_music_player.play()
+	elif GameController.time == "night":
+		night_music_player.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -75,6 +93,12 @@ func _process(delta):
 			if within_bounds.y >= closet.top_side and within_bounds.y <= closet.bottom_side:
 				spawn_bait()
 				
+	if GameController.current_energy >= GameController.max_energy:
+		GameController.current_energy = GameController.max_energy
+	
+	if GameController.current_energy <= GameController.min_energy:
+		GameController.current_energy = GameController.min_energy
+		
 	if choice_count >= 4:
 		if GameController.time == "day":
 			GameController.time = "night"
@@ -110,7 +134,14 @@ func _on_spawn_new_npc():
 	#Spawn a new NPC
 	if GameController.time == "day":
 		current_npc.queue_free()
-		var new_npc = npc.instantiate()
+		var random_npc = randi_range(1, 3)
+		var new_npc
+		if random_npc == 1:
+			new_npc = npc.instantiate()
+		elif random_npc == 2:
+			new_npc = npc2.instantiate()
+		elif random_npc == 3:
+			new_npc = npc3.instantiate()
 		add_child(new_npc)
 		current_npc = new_npc
 		new_npc.global_position.x = 0
@@ -118,6 +149,8 @@ func _on_spawn_new_npc():
 		new_npc.connect("npc_ready", _on_npc_ready)
 		
 		choice_count += 1
+		
+		spawn_npc_sound.play()
 
 func _on_energy_timer_timeout():
 	if GameController.time == "night":

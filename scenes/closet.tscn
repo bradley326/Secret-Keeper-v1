@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/closet.gd" id="1_uljvo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wekv"]
-size = Vector2(192, 256)
+size = Vector2(176, 256)
 
 [node name="Closet" type="Area2D"]
 script = ExtResource("1_uljvo")

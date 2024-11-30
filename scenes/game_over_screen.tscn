@@ -1,25 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://co8md4vfm2puj"]
+[gd_scene load_steps=3 format=3 uid="uid://co8md4vfm2puj"]
 
 [ext_resource type="Script" path="res://GameOverScreen.gd" id="1_2a8uh"]
+[ext_resource type="AudioStream" uid="uid://dxo42v6sjbth4" path="res://assets/sound/Journey into Fog (looped).wav" id="2_7l8py"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2a8uh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 296.0
-offset_top = 192.0
-offset_right = -304.0
-offset_bottom = -248.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -33.0
+offset_right = 46.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayAgain" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -28,6 +35,10 @@ text = "Play again"
 [node name="QuitGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7l8py")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]

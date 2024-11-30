@@ -82,7 +82,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _on_button_one_pressed() -> void:
 	GameController.gold_count += minor_secrets[random_number_one][2]
 	send_skeleton_amount.emit(minor_secrets[random_number_one][1])

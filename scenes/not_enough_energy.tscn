@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3l0nvjvg65a8"]
+
+[ext_resource type="Script" path="res://NotEnoughEnergy.gd" id="1_srgxr"]
+
+[node name="NotEnoughEnergy" type="Control"]
+layout_mode = 3
+anchor_left = 0.375
+anchor_top = 0.483
+anchor_right = 0.625
+anchor_bottom = 0.533
+offset_left = -240.0
+offset_top = -231.84
+offset_right = 240.0
+offset_bottom = 224.16
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_srgxr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.483
+anchor_right = 0.625
+anchor_bottom = 0.533
+offset_left = -1.52588e-05
+offset_top = -2.84001
+offset_right = 1.0
+offset_bottom = 1.15997
+
+[node name="NotEnoughEnergyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38
+anchor_top = 0.476
+anchor_right = 0.62
+anchor_bottom = 0.524
+offset_left = 0.299988
+offset_top = 0.019989
+offset_right = -0.299988
+offset_bottom = -0.0200195
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not enough energy!"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

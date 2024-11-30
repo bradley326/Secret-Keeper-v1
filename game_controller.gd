@@ -2,9 +2,12 @@ extends Node
 
 @onready var total_energy: int = 100
 @onready var current_energy: int
+@onready var max_energy: int = 100
+@onready var min_energy: int = 0
 @onready var energy_regen_amount_percent: float = .01
 @onready var energy_regen_time: int = 1
 @onready var time: String = "day"
+@onready var not_enough_energy: bool = false
 
 @onready var gold_count: int = 0
 @onready var skeleton_count: Array

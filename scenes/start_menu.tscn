@@ -1,31 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://mn1ps5lwphpf"]
+[gd_scene load_steps=4 format=3 uid="uid://mn1ps5lwphpf"]
 
 [ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_cneu2"]
+[ext_resource type="AudioStream" uid="uid://dxo42v6sjbth4" path="res://assets/sound/Journey into Fog (looped).wav" id="2_buko6"]
+[ext_resource type="AudioStream" uid="uid://clyw6l00ubuiv" path="res://assets/sound/click.wav" id="3_62d6n"]
 
 [node name="Start Menu" type="Control"]
 layout_mode = 3
-anchor_left = 0.35
-anchor_top = 0.356
-anchor_right = 0.65
-anchor_bottom = 0.711
-offset_left = -1.52588e-05
-offset_top = -0.160004
-offset_right = -3.05176e-05
-offset_bottom = 0.0399933
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -0.0999985
+offset_bottom = 0.0999985
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cneu2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.125
-anchor_top = 0.25
-anchor_right = 0.659
-anchor_bottom = 0.766
-offset_left = 2.624
-offset_right = -203.904
-offset_bottom = -94.24
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -33.0
+offset_right = 50.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Start Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -34,5 +38,12 @@ text = "Start Game"
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Placeholder"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_buko6")
+autoplay = true
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_62d6n")
 
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]

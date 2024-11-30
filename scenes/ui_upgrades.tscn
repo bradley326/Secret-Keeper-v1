@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qm3tc3kc6kjv"]
+[gd_scene load_steps=22 format=3 uid="uid://qm3tc3kc6kjv"]
 
 [ext_resource type="Script" path="res://scenes/ui_upgrades.gd" id="1_wk35x"]
 [ext_resource type="Texture2D" uid="uid://dlpb122683pei" path="res://assets/repair health upgrade normal.png" id="2_ys187"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bc35ip7rlv382" path="res://assets/freeze size normal.png" id="17_itmc2"]
 [ext_resource type="Texture2D" uid="uid://cwsrm4f4kpgxt" path="res://assets/freeze size pressed.png" id="18_4g1ih"]
 [ext_resource type="Texture2D" uid="uid://22tg4l2xi75a" path="res://assets/freeze size hover.png" id="19_il2my"]
+[ext_resource type="AudioStream" uid="uid://clyw6l00ubuiv" path="res://assets/sound/click.wav" id="20_1tosr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bykf"]
 bg_color = Color(0.137255, 0, 0.152941, 1)
@@ -182,6 +183,9 @@ stretch_mode = 0
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 stretch_mode = 0
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_1tosr")
 
 [connection signal="pressed" from="TabContainer/Locks/LockHealthButton" to="." method="_on_lock_health_button_pressed"]
 [connection signal="pressed" from="TabContainer/Locks/LockHealthRegen" to="." method="_on_lock_health_regen_pressed"]

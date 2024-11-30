@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://n6au6qcokrrp"]
+
+[ext_resource type="Script" path="res://NPC.gd" id="1_fi2qy"]
+[ext_resource type="Texture2D" uid="uid://cdb3k31be6h84" path="res://assets/person three spritesheet.png" id="2_kt82b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7aty"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c833"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv6xs"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6auij"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dilr"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lbk4"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkhm"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menn6"]
+atlas = ExtResource("2_kt82b")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ddcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7aty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c833")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv6xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6auij")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dilr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lbk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpkhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_menn6")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkf4e"]
+size = Vector2(32, 32)
+
+[node name="NPC" type="Area2D"]
+script = ExtResource("1_fi2qy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ddcu")
+animation = &"talking"
+autoplay = "walking"
+frame_progress = 0.229132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jkf4e")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

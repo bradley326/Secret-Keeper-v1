@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk1tqo8oaj5rs"]
+[gd_scene load_steps=23 format=3 uid="uid://dk1tqo8oaj5rs"]
 
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_egu5k"]
 [ext_resource type="Texture2D" uid="uid://cs1wagayipeou" path="res://assets/repair icon normal.png" id="2_1gg86"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bnv866wr2h2cs" path="res://assets/upgrade icon normal.png" id="14_g3b0f"]
 [ext_resource type="Texture2D" uid="uid://brmlbmn1co7td" path="res://assets/upgrade icon pressed.png" id="15_fuvpw"]
 [ext_resource type="Texture2D" uid="uid://br8vctqyf7d6r" path="res://assets/upgrade icon hover.png" id="16_s4ve4"]
+[ext_resource type="AudioStream" uid="uid://clyw6l00ubuiv" path="res://assets/sound/click.wav" id="17_gk61j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15che"]
 bg_color = Color(0.137255, 0, 0.152941, 1)
@@ -182,6 +183,9 @@ texture_pressed = ExtResource("15_fuvpw")
 texture_hover = ExtResource("16_s4ve4")
 stretch_mode = 0
 metadata/_edit_lock_ = true
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_gk61j")
 
 [connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

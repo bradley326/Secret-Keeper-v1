@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv63tt35w6ho6"]
+
+[ext_resource type="Texture2D" uid="uid://d65w5etc725x" path="res://assets/moon.png" id="1_mibde"]
+[ext_resource type="Script" path="res://Moon.gd" id="2_42qt3"]
+
+[node name="Moon" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_mibde")
+script = ExtResource("2_42qt3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

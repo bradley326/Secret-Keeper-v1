@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bktr0ebdb5td5"
+path="res://.godot/imported/Magic Within (looped).wav-0c5ad73ada9f7a80c75e6646f3cc8ea1.sample"
+
+[deps]
+
+source_file="res://assets/sound/Magic Within (looped).wav"
+dest_files=["res://.godot/imported/Magic Within (looped).wav-0c5ad73ada9f7a80c75e6646f3cc8ea1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

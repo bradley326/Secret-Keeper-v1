@@ -5,6 +5,8 @@ extends Area2D
 @onready var attack_range = $CollisionArea
 @onready var attack_timer = $Timer
 @onready var freeze_timer = $FreezeTimer
+@onready var sprite = $Sprite2D
+@onready var attack_sound = $AttackSound
 
 var target
 var target_direction
@@ -56,23 +58,27 @@ func _on_detect_area_area_entered(area):
 		target = area
 
 func _searching(delta):
+	sprite.play("idle")
 	global_position.x += 30 * delta * direction_x
 	global_position.y += 30 * delta * direction_y
 
 func _detected(delta):
 	if target != null:
+		sprite.play("detected")
 		target_direction = (target.global_position - global_position).normalized()
 		global_position.x += 70 * delta * target_direction.x
 		global_position.y += 70 * delta * target_direction.y
 
 func _attacking():
+	sprite.play("attacking")
 	if target == null:
 		current_state = State.SEARCHING
 		#if target.current_health <= 0:
 
 
 func _frozen():
-	pass
+	sprite.play("idle")
+	sprite.stop()
 
 func _on_area_entered(area):
 	if (area.is_in_group("locks") or area.is_in_group("bait")) and GameController.time == "night":
@@ -88,6 +94,8 @@ func _on_area_entered(area):
 func _on_timer_timeout():
 	var damage = randi_range(min_damage, max_damage)
 	damage_done.emit(damage)
+	attack_sound.play()
+	
 
 func _on_freeze_timer_timeout():
 	current_state = previous_state

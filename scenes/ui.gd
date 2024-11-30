@@ -3,6 +3,7 @@ extends Control
 @onready var energy_bar = $HBoxContainer3/EnergyAmount
 @onready var skeleton_label = $HBoxContainer2/SkeletonLabel
 @onready var gold_label = $HBoxContainer2/MoneyLabel
+@onready var click_sound_player = $ClickSoundPlayer
 @onready var upgrade_ui = preload("res://scenes/ui_upgrades.tscn")
 @onready var upgrade_ui_visible: bool
 @onready var new_upgrade_ui = upgrade_ui.instantiate()
@@ -23,16 +24,17 @@ func _process(delta):
 
 
 func _on_texture_button_pressed():
-	print("Activating Heal")
 	GameController.current_tool = GameController.Tool.HEAL
+	click_sound_player.play()
 
 
 func _on_texture_button_2_pressed():
-	print("Activating Freeze")
 	GameController.current_tool = GameController.Tool.FREEZE
+	click_sound_player.play()
 
 func _on_texture_button_3_pressed():
 	GameController.current_tool = GameController.Tool.BAIT
+	click_sound_player.play()
 
 func update_energy():
 	energy_bar.value = GameController.current_energy
@@ -44,6 +46,7 @@ func update_gold_count():
 	gold_label.text = str(GameController.gold_count)
 
 func _on_upgrade_button_pressed() -> void:
+	click_sound_player.play()
 	if upgrade_ui_visible == false:
 		new_upgrade_ui.global_position.x = 304
 		new_upgrade_ui.global_position.y = 360
