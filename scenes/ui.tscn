@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dk1tqo8oaj5rs"]
+[gd_scene load_steps=29 format=3 uid="uid://dk1tqo8oaj5rs"]
 
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_egu5k"]
 [ext_resource type="Texture2D" uid="uid://cs1wagayipeou" path="res://assets/repair icon normal.png" id="2_1gg86"]
@@ -29,6 +29,32 @@ border_color = Color(0.8, 0, 0.00392157, 1)
 [sub_resource type="Theme" id="Theme_fc8iy"]
 Button/styles/hover = SubResource("StyleBoxFlat_2ouwo")
 Button/styles/normal = SubResource("StyleBoxFlat_eux04")
+
+[sub_resource type="InputEventKey" id="InputEventKey_ap808"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_j18hx"]
+events = [SubResource("InputEventKey_ap808")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ld6ju"]
+device = -1
+pressed = true
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_n4uii"]
+events = [SubResource("InputEventKey_ld6ju")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_aevaw"]
+device = -1
+pressed = true
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_g0qox"]
+events = [SubResource("InputEventKey_aevaw")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yv4c"]
 bg_color = Color(0.651033, 0.617634, 7.70092e-07, 1)
@@ -79,7 +105,10 @@ scale = Vector2(0.15, 0.15)
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Repair tool.
+Click on a lock to repair it."
 theme = SubResource("Theme_fc8iy")
+shortcut = SubResource("Shortcut_j18hx")
 texture_normal = ExtResource("2_1gg86")
 texture_pressed = ExtResource("3_ivxlg")
 texture_hover = ExtResource("4_3mgto")
@@ -89,6 +118,9 @@ metadata/_edit_lock_ = true
 [node name="TextureButton2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Freeze tool.
+Click to freeze skeletons caught in the area of effect."
+shortcut = SubResource("Shortcut_n4uii")
 texture_normal = ExtResource("5_po37i")
 texture_pressed = ExtResource("6_7vqws")
 texture_hover = ExtResource("7_0i6l1")
@@ -98,6 +130,9 @@ metadata/_edit_lock_ = true
 [node name="TextureButton3" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Bait.
+Create a fake lock to draw skeletons' attention."
+shortcut = SubResource("Shortcut_g0qox")
 texture_normal = ExtResource("8_23y2t")
 texture_pressed = ExtResource("9_s2f32")
 texture_hover = ExtResource("10_83kf3")
@@ -177,6 +212,7 @@ scale = Vector2(0.15, 0.15)
 [node name="UpgradeButton" type="TextureButton" parent="HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Upgrade your locks and tools."
 theme = SubResource("Theme_fc8iy")
 texture_normal = ExtResource("14_g3b0f")
 texture_pressed = ExtResource("15_fuvpw")

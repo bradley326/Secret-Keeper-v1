@@ -4,9 +4,11 @@ extends Area2D
 @onready var current_health = 100
 @onready var health_bar = $Control/ProgressBar
 @onready var size = $CollisionShape2D
+@onready var sound_effect = $SoundEffect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	sound_effect.play()
 	size.scale.x = GameController.bait_size_scale
 	size.scale.y = GameController.bait_size_scale
 

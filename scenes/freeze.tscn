@@ -1,6 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cep0hlev1mboh"]
+[gd_scene load_steps=10 format=3 uid="uid://cep0hlev1mboh"]
 
 [ext_resource type="Script" path="res://scenes/freeze.gd" id="1_y3b7n"]
+[ext_resource type="Texture2D" uid="uid://biy40njm8oqyr" path="res://assets/freeze spritesheet.png" id="2_5mmct"]
+[ext_resource type="AudioStream" uid="uid://dwwwqbk45ijee" path="res://assets/sound/sfx100v2_misc_02.ogg" id="3_ibf1f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7m5v"]
+atlas = ExtResource("2_5mmct")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uygpg"]
+atlas = ExtResource("2_5mmct")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtnam"]
+atlas = ExtResource("2_5mmct")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xwsa"]
+atlas = ExtResource("2_5mmct")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0xww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7m5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uygpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtnam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xwsa")
+}],
+"loop": true,
+"name": &"activated",
+"speed": 4.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wppwo"]
 radius = 24.0
@@ -8,11 +46,20 @@ radius = 24.0
 [node name="Freeze" type="Area2D" groups=["freeze"]]
 script = ExtResource("1_y3b7n")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_r0xww")
+animation = &"activated"
+autoplay = "activated"
+frame_progress = 0.479826
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppwo")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ibf1f")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

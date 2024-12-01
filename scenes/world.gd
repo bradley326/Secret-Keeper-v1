@@ -85,13 +85,19 @@ func _process(delta):
 		var within_bounds: Vector2 = get_viewport().get_mouse_position()
 		if within_bounds.x >= closet.left_side and within_bounds.x <= closet.right_side:
 			if within_bounds.y >= closet.top_side and within_bounds.y <= closet.bottom_side:
-				freeze_skeletons()
+				if GameController.current_energy >= GameController.freeze_tool_energy_cost:
+					freeze_skeletons()
+				elif GameController.current_energy <= GameController.freeze_tool_energy_cost:
+					GameController.not_enough_energy = true
 
 	if Input.is_action_just_pressed("left_mouse") and GameController.current_tool == GameController.Tool.BAIT and GameController.time == "night":
 		var within_bounds: Vector2 = get_viewport().get_mouse_position()
 		if within_bounds.x >= closet.left_side and within_bounds.x <= closet.right_side:
 			if within_bounds.y >= closet.top_side and within_bounds.y <= closet.bottom_side:
-				spawn_bait()
+				if GameController.current_energy >= GameController.bait_energy_cost:
+					spawn_bait()
+				elif GameController.current_energy < GameController.bait_energy_cost:
+					GameController.not_enough_energy = true
 				
 	if GameController.current_energy >= GameController.max_energy:
 		GameController.current_energy = GameController.max_energy

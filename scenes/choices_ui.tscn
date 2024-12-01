@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfsydpvqmrmsb"]
+[gd_scene load_steps=3 format=3 uid="uid://cfsydpvqmrmsb"]
 
 [ext_resource type="Script" path="res://scenes/choices_ui.gd" id="1_o4hnu"]
+[ext_resource type="AudioStream" uid="uid://decjce4emdm14" path="res://assets/sound/handleCoins.ogg" id="2_g1odb"]
 
 [node name="ChoicesUI" type="Control"]
 layout_mode = 3
@@ -23,6 +24,7 @@ offset_bottom = 64.0
 metadata/_edit_group_ = true
 
 [node name="LieOneBox" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 12
 layout_mode = 2
 
 [node name="LieText" type="Label" parent="VBoxContainer/LieOneBox"]
@@ -46,6 +48,7 @@ theme_override_font_sizes/font_size = 12
 text = "accept"
 
 [node name="LieTwoBox" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 12
 layout_mode = 2
 
 [node name="LieText" type="Label" parent="VBoxContainer/LieTwoBox"]
@@ -69,6 +72,7 @@ theme_override_font_sizes/font_size = 12
 text = "accept"
 
 [node name="LieThreeBox" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 12
 layout_mode = 2
 
 [node name="LieText" type="Label" parent="VBoxContainer/LieThreeBox"]
@@ -90,6 +94,10 @@ text = "gold amount"
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "accept"
+
+[node name="CoinSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g1odb")
+volume_db = 24.0
 
 [connection signal="pressed" from="VBoxContainer/LieOneBox/ButtonOne" to="." method="_on_button_one_pressed"]
 [connection signal="pressed" from="VBoxContainer/LieTwoBox/ButtonTwo" to="." method="_on_button_two_pressed"]

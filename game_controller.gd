@@ -21,39 +21,39 @@ extends Node
 #Lock health amount upgrades
 @onready var lock_max_health: int = 100
 @onready var lock_health_upgrade_amount: int = 50
-@onready var lock_health_upgrade_cost: int = 50
+@onready var lock_health_upgrade_cost: int = 100
 @onready var lock_health_upgrade_level: int = 1
 #Lock health regen upgrades
 @onready var lock_health_regen_amount: int = 0
 @onready var lock_health_regen_increase: int = 5
-@onready var lock_health_regen_cost: int = 20
+@onready var lock_health_regen_cost: int = 200
 @onready var lock_health_regen_level: int = 1
 
 #Tool variables
 #Repair tool variables
 #Repair tool energy cost reduction
-@onready var repair_tool_heal_energy_cost: int = 10
-@onready var repair_tool_heal_cost: int = 60
-@onready var repair_tool_heal_energy_decrease: int = 3
+@onready var repair_tool_heal_energy_cost: int = 5
+@onready var repair_tool_heal_cost: int = 100
+@onready var repair_tool_heal_energy_decrease: int = 1
 @onready var repair_tool_heal_energy_level: int = 1
 #Repair tool heal amount increase
-@onready var repair_tool_heal_amount: int = 10
+@onready var repair_tool_heal_amount: int = 20
 @onready var repair_tool_heal_increase: int = 10
 @onready var repair_tool_heal_level: int = 1
 
 #Freeze tool variables
 #Freeze tool energy cost reduction
-@onready var freeze_tool_energy_cost: int = 20
-@onready var freeze_tool_energy_gold_cost: int = 50
+@onready var freeze_tool_energy_cost: int = 30
+@onready var freeze_tool_energy_gold_cost: int = 200
 @onready var freeze_tool_energy_decrease: int = 5
 @onready var freeze_tool_energy_level: int = 1
 #Freeze tool freeze duration
-@onready var freeze_tool_duration_gold_cost: int = 50
+@onready var freeze_tool_duration_gold_cost: int = 300
 @onready var freeze_tool_freeze_duration: int = 5
 @onready var freeze_tool_freeze_duration_increase: int = 2
 @onready var freeze_tool_duration_level: int = 1
 #Freeze tool size
-@onready var freeze_tool_size_gold_cost: int = 50
+@onready var freeze_tool_size_gold_cost: int = 300
 @onready var freeze_tool_size_increase: float = .25
 @onready var freeze_tool_size_scale: float = 1.0
 @onready var freeze_tool_size_level: int = 1
@@ -62,7 +62,7 @@ extends Node
 #Bait energy cost reduction
 @onready var bait_energy_cost: int = 25
 @onready var bait_energy_cost_decrease: int = 3
-@onready var bait_energy_gold_cost: int = 50
+@onready var bait_energy_gold_cost: int = 200
 @onready var bait_energy_cost_level: int = 1
 #Bait size
 @onready var bait_size_gold_cost: int = 50
@@ -71,7 +71,7 @@ extends Node
 @onready var bait_size_level: int = 1
 #Bait max health
 @onready var bait_max_health: int = 100
-@onready var bait_max_health_gold_cost: int = 50
+@onready var bait_max_health_gold_cost: int = 300
 @onready var bait_max_health_increase: int = 50
 @onready var bait_max_health_level: int = 1
 

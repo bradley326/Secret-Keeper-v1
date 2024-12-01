@@ -4,6 +4,7 @@ extends Area2D
 @onready var current_health = GameController.lock_max_health
 @onready var health_bar = $Control/ProgressBar
 @onready var not_enough_energy = $NotEnoughEnergy
+@onready var sound_effect = $SoundEffect
 @onready var lock_number: int
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and GameController.current_tool == GameController.Tool.HEAL and GameController.time == "night":
 			if GameController.current_energy >= GameController.repair_tool_heal_energy_cost:
 				if event.pressed:
+					sound_effect.play()
 					current_health += GameController.repair_tool_heal_amount
 					GameController.current_energy -= GameController.repair_tool_heal_energy_cost
 			elif GameController.current_energy < GameController.repair_tool_heal_energy_cost:

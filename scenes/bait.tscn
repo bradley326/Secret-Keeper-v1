@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhsh0exq34qo4"]
+[gd_scene load_steps=7 format=3 uid="uid://bhsh0exq34qo4"]
 
 [ext_resource type="Script" path="res://Bait.gd" id="1_ykyis"]
 [ext_resource type="Texture2D" uid="uid://duvh3by25lkgy" path="res://assets/bait sprite.png" id="2_gcsrs"]
+[ext_resource type="AudioStream" uid="uid://daec52pmdrxwm" path="res://assets/sound/metalLatch.ogg" id="3_c73ao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vu3t"]
 size = Vector2(16, 16)
@@ -49,5 +50,8 @@ offset_bottom = -6.0
 theme = SubResource("Theme_50vve")
 value = 100.0
 show_percentage = false
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c73ao")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo24775w80nli"]
+[gd_scene load_steps=4 format=3 uid="uid://bo24775w80nli"]
 
 [ext_resource type="Script" path="res://scenes/transition.gd" id="1_c6wy7"]
+
+[sub_resource type="Theme" id="Theme_qbcux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt5so"]
+bg_color = Color(0.113026, 2.26967e-05, 0.130822, 1)
 
 [node name="Transition" type="Control"]
 layout_mode = 3
@@ -12,6 +17,14 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c6wy7")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+theme = SubResource("Theme_qbcux")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kt5so")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://qm3tc3kc6kjv"]
+[gd_scene load_steps=23 format=3 uid="uid://qm3tc3kc6kjv"]
 
 [ext_resource type="Script" path="res://scenes/ui_upgrades.gd" id="1_wk35x"]
 [ext_resource type="Texture2D" uid="uid://dlpb122683pei" path="res://assets/repair health upgrade normal.png" id="2_ys187"]
 [ext_resource type="Texture2D" uid="uid://bqycqm4h2mlfl" path="res://assets/repair health upgrade pressed.png" id="3_5ywn2"]
 [ext_resource type="Texture2D" uid="uid://0bhlkpuoc10d" path="res://assets/repair health upgrade hover.png" id="4_q8lri"]
 [ext_resource type="Texture2D" uid="uid://43mx41jn4vku" path="res://assets/repair regen upgrade normal.png" id="5_fphwd"]
+[ext_resource type="Texture2D" uid="uid://beoqvvtw5onw2" path="res://assets/disabled button.png" id="5_g8j02"]
 [ext_resource type="Texture2D" uid="uid://dc4weo7qp8vos" path="res://assets/repair regen upgrade pressed.png" id="6_hliqo"]
 [ext_resource type="Texture2D" uid="uid://btevm7qx7pjvb" path="res://assets/repair regen upgrade hover.png" id="7_fyr7t"]
 [ext_resource type="Texture2D" uid="uid://co53tfsiyvbk8" path="res://assets/repair energy cost normal.png" id="8_gsapx"]
@@ -72,19 +73,22 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Upgrade the amount of damage your locks can receive before breaking.
-50 gold."
+100 gold."
 texture_normal = ExtResource("2_ys187")
 texture_pressed = ExtResource("3_5ywn2")
 texture_hover = ExtResource("4_q8lri")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="LockHealthRegen" type="TextureButton" parent="TabContainer/Locks"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Your locks slowly repair themselves."
+tooltip_text = "Your locks slowly repair themselves.
+200 gold."
 texture_normal = ExtResource("5_fphwd")
 texture_pressed = ExtResource("6_hliqo")
 texture_hover = ExtResource("7_fyr7t")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="Placeholder" type="TextureButton" parent="TabContainer/Locks"]
@@ -101,19 +105,23 @@ metadata/_tab_index = 1
 [node name="RepairToolEnergyCost" type="TextureButton" parent="TabContainer/Repair Tool"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Reduce the energy cost of your repair tool."
+tooltip_text = "Reduce the energy cost of your repair tool.
+100 gold."
 texture_normal = ExtResource("8_gsapx")
 texture_pressed = ExtResource("9_44oo6")
 texture_hover = ExtResource("10_0apje")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="RepairToolHealAmount" type="TextureButton" parent="TabContainer/Repair Tool"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Increase the amount of each repair."
+tooltip_text = "Increase the amount of each repair.
+100 gold."
 texture_normal = ExtResource("11_ag1pl")
 texture_pressed = ExtResource("12_grgdy")
 texture_hover = ExtResource("13_rwxl6")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="Placeholder2" type="TextureButton" parent="TabContainer/Repair Tool"]
@@ -130,28 +138,34 @@ metadata/_tab_index = 2
 [node name="FreezeToolEnergyCost" type="TextureButton" parent="TabContainer/Freeze Tool"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Reduce the energy cost of your freeze tool."
+tooltip_text = "Reduce the energy cost of your freeze tool.
+200 gold."
 texture_normal = ExtResource("8_gsapx")
 texture_pressed = ExtResource("9_44oo6")
 texture_hover = ExtResource("10_0apje")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="FreezeToolFreezeDuration" type="TextureButton" parent="TabContainer/Freeze Tool"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Increase the duration that skeletons are frozen."
+tooltip_text = "Increase the duration that skeletons are frozen.
+300 gold."
 texture_normal = ExtResource("14_2mi1g")
 texture_pressed = ExtResource("15_oejqm")
 texture_hover = ExtResource("16_shtod")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="FreezeToolFreezeRadius" type="TextureButton" parent="TabContainer/Freeze Tool"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Increase the area of effect of your freeze tool."
+tooltip_text = "Increase the area of effect of your freeze tool.
+300 gold."
 texture_normal = ExtResource("17_itmc2")
 texture_pressed = ExtResource("18_4g1ih")
 texture_hover = ExtResource("19_il2my")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="Placeholder3" type="TextureButton" parent="TabContainer/Freeze Tool"]
@@ -166,17 +180,23 @@ theme_override_constants/separation = 20
 [node name="BaitEnergyCost" type="TextureButton" parent="TabContainer/Baits"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Reduce the energy cost of each fake trap.
+200 gold."
 texture_normal = ExtResource("8_gsapx")
 texture_pressed = ExtResource("9_44oo6")
 texture_hover = ExtResource("10_0apje")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="BaitHealth" type="TextureButton" parent="TabContainer/Baits"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Increase the amount of damage that each fake lock can take.
+300 gold."
 texture_normal = ExtResource("11_ag1pl")
 texture_pressed = ExtResource("12_grgdy")
 texture_hover = ExtResource("13_rwxl6")
+texture_disabled = ExtResource("5_g8j02")
 stretch_mode = 0
 
 [node name="Placeholder2" type="TextureButton" parent="TabContainer/Baits"]
